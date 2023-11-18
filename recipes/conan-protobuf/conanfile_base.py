@@ -1,6 +1,5 @@
-from conans import ConanFile, tools
+from conan import ConanFile, tools
 import os
-
 
 class ConanFileBase(ConanFile):
     _base_name = "protobuf"
@@ -13,7 +12,7 @@ class ConanFileBase(ConanFile):
     license = "BSD-3-Clause"
     exports = ["LICENSE.md", "conanfile_base.py"]
     exports_sources = ["CMakeLists.txt"]
-    generators = "cmake"
+    generators = "CMakeDeps"
     short_paths = True
 
     _source_subfolder = "source_subfolder"

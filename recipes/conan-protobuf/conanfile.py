@@ -1,7 +1,8 @@
-from conans import tools, CMake
+from conan import tools
+from conan.tools.cmake import CMake
 from conanfile_base import ConanFileBase
-from conans.tools import Version
-from conans.errors import ConanInvalidConfiguration
+from conan.api.conan_api import Version
+from conan.errors import ConanInvalidConfiguration
 
 
 class ConanFileDefault(ConanFileBase):
@@ -24,7 +25,7 @@ class ConanFileDefault(ConanFileBase):
         return self.settings.compiler == "clang" and self.settings.arch == "x86"
 
     def configure(self):
-        if self.settings.os == "Windows" and self.settings.compiler == "Visual Studio":
+        if self.settings.os == "Windows" and self.settings.compiler == "msvc":
             del self.options.fPIC
             compiler_version = Version(self.settings.compiler.version.value)
             if compiler_version < "14":

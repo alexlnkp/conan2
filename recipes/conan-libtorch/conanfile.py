@@ -1,4 +1,5 @@
-from conans import ConanFile, CMake, tools, RunEnvironment
+from conan import ConanFile, tools
+from conan.tools.cmake import CMake
 from conans.errors import ConanInvalidConfiguration
 import os
 
@@ -126,7 +127,7 @@ class LibtorchConan(ConanFile):
     _build_subfolder = "build_subfolder"
 
     def configure(self):
-        if self.settings.os == "Windows" and self.settings.compiler == "Visual Studio":
+        if self.settings.os == "Windows" and self.settings.compiler == "msvc":
             del self.options.fPIC
             compiler_version = int(str(self.settings.compiler.version))
             if compiler_version < 14:
